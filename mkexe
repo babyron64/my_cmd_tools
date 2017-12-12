@@ -44,7 +44,8 @@ case $ext in
           tmp_dir=/var/tmp/mkexe/scm ;;
     hs  ) sheb="/usr/bin/env runhaskell"
           tmp_dir=/var/tmp/mkexe/haskell ;;
-    js  ) sheb=~/.nodebrew/current/bin/node ;;
+    # js  ) sheb=~/.nodebrew/current/bin/node ;;
+    js  ) not_support ;;
     cmd ) sheb=/bin/bash
           tmp_dir=/var/tmp/mkexe/sh
           dir=/usr/local/share/bin
