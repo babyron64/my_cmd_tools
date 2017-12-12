@@ -15,4 +15,4 @@ Execute install.sh script. You can just install some of the tools by providing a
 ```
 
 ## Tool's specific info
-For detail infomation about each of the tools, see the document in Document folder.
+For detail infomation about each tools, see man pages or the document in Document folder.
