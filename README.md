@@ -5,9 +5,7 @@ This repository contains command line tools I created. The number of tools avail
 - mkexe
 - gettmp
 - getrow
-- docker-build
 - lbtex
-- reldl
 
 ## Install
 Execute install.sh script. You can just install some of the tools by providing arguments. The arguments are names of tools which you want to install. If no argument is provided, all the tools will be installed. For example,
@@ -17,4 +15,4 @@ Execute install.sh script. You can just install some of the tools by providing a
 ```
 
 ## Tool's specific info
-For detail infomation about each of the tools, see the document in Document folder.
+For detail infomation about each tools, see man pages or the document in Document folder.

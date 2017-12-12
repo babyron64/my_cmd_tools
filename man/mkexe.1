@@ -1,0 +1,61 @@
+.TH mkexe 1
+.SH NAME
+mkexe \- generate an executable file with a shebang
+
+.SH SYNOPSIS
+.B mkexe
+[-d directory]
+[-e extension]
+[-t temporary]
+[-f forced]
+[? help]
+filename
+
+.SH DESCRIPTION
+.I mkexe
+makes an executable file with an appropreate shebang, according to the extension of the filename. And then, add the executable modifier to the file with normal previlege. An extension can be explicitly specified by -e option. When you want to create your own command with shell script, you can use .cmd extension instead of .sh, which makes the file created at the /usr/local/bin. For more details, see -e option.
+
+.SH OPTIONS
+Here is a summary of all the options.
+.TP
+.BI -d directory
+specify the directory that contains the program to execute scripts.
+.TP
+.BI -e extension
+this extension overrides the default extension, which is the filename's extension.
+.TP
+.BI -t
+make a temporary script under /var/tmp/mkexe. It deppends on the file extension (eg. .sh or .py) where the file is created. To change the tmp directory, edit this command's script. If a file with the same name already exists in the tmp directory, it will be overwritten.
+.TP
+.B -f
+force to make the file even if it already exists. The old file will be overwritten.
+
+.SH EXTENSION SPECIFIC INFO
+.TP
+py
+shebang: /usr/local/bin/python3
+.br
+tmp location: /var/tmp/mkexe/python
+.TP
+sh
+shebang: /bin/bash
+.br
+tmp location: /var/tmp/mkexe/sh
+.TP
+scm
+shebang: /usr/local/bin/gosh
+.br
+tmp location: /var/tmp/mkexe/scm
+.TP
+hs
+shebang: /usr/bin/env runhaskell
+.br
+tmp location: /var/tmp/mkexe/haskell
+.TP
+cmd
+shebang: /bin/bash
+.br
+tmp location: /var/tmp/mkexe/sh
+
+.SH AUTHORS
+Baba Tatsuya
