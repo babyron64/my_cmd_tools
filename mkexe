@@ -1,0 +1,74 @@
+#!/bin/bash
+not_support() {
+    echo "mkexe: Not supported extension" >&2
+    exit 1
+}
+
+custom_ext () {
+    if [ "$sheb" = "" ];then
+        echo "mkexe: Add 'd' option for custom extension" >&2
+        exit 1 
+    fi
+}
+
+while getopts tfd:e: OPT
+do
+    case $OPT in
+        d ) sheb=$OPTARG ;;
+        e ) ext=$OPTARG ;;
+        t ) istmp=true ;;
+        f ) forced=true ;;
+        \? ) exit 1 ;;
+    esac
+done
+
+shift $(($OPTIND - 1))
+
+filename=$1
+dir=./
+
+if [ "$ext" = "" ];then
+    ext=${filename##*.}
+fi
+
+case $ext in
+    # c   ) sheb=/usr/bin/gcc ;;
+    # cpp ) sheb=/usr/bin/g++ ;;
+    c   ) not_support ;; 
+    cpp ) not_support ;;
+    py  ) sheb=/usr/local/bin/python3
+          tmp_dir=~/tmp/python ;;
+    sh  ) sheb=/bin/bash
+          tmp_dir=~/tmp/sh ;;
+    scm ) sheb=/usr/local/bin/gosh
+          tmp_dir=~/tmp/scm ;;
+    hs  ) sheb="/usr/bin/env runhaskell"
+          tmp_dir=~/tmp/haskell ;;
+    js  ) sheb=~/.nodebrew/current/bin/node ;;
+    cmd ) sheb=/bin/bash
+          tmp_dir=~/tmp/sh
+          dir=~/bin
+          filename="`echo $filename | sed -e 's/\.[^\.]*$//g'`" ;;
+    *   ) custom_ext ;;
+esac
+
+if [ $istmp ];then
+    if [ ! $tmp_dir ];then
+        echo "temporary directory is not set"
+        exit 1
+    fi
+    dir=$tmp_dir
+    forced=true
+fi
+
+filepath=$dir/$filename
+
+if [ -f "$filepath" -a "$forced" = "" ]; then
+    echo "The file already exists. Add 'f' option to execute it anyway." >&2
+    exit 1;
+fi
+
+touch $filepath
+chmod u+x $filepath
+echo "#!${sheb}" > $filepath
+echo $filepath
