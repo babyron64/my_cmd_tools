@@ -37,17 +37,17 @@ case $ext in
     c   ) not_support ;; 
     cpp ) not_support ;;
     py  ) sheb=/usr/local/bin/python3
-          tmp_dir=~/tmp/python ;;
+          tmp_dir=/var/tmp/mkexe/python ;;
     sh  ) sheb=/bin/bash
-          tmp_dir=~/tmp/sh ;;
+          tmp_dir=/var/tmp/mkexe/sh ;;
     scm ) sheb=/usr/local/bin/gosh
-          tmp_dir=~/tmp/scm ;;
+          tmp_dir=/var/tmp/mkexe/scm ;;
     hs  ) sheb="/usr/bin/env runhaskell"
-          tmp_dir=~/tmp/haskell ;;
+          tmp_dir=/var/tmp/mkexe/haskell ;;
     js  ) sheb=~/.nodebrew/current/bin/node ;;
     cmd ) sheb=/bin/bash
-          tmp_dir=~/tmp/sh
-          dir=~/bin
+          tmp_dir=/var/tmp/mkexe/sh
+          dir=/usr/local/share/bin
           filename="`echo $filename | sed -e 's/\.[^\.]*$//g'`" ;;
     *   ) custom_ext ;;
 esac
@@ -66,6 +66,10 @@ filepath=$dir/$filename
 if [ -f "$filepath" -a "$forced" = "" ]; then
     echo "The file already exists. Add 'f' option to execute it anyway." >&2
     exit 1;
+fi
+
+if [ ! -d $dir ]; then
+    mkdir -p $dir
 fi
 
 touch $filepath

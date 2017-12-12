@@ -4,12 +4,19 @@ if [ $# -ne 1 ];then
     echo "usage: gettmp file_name" >&2
     exit 1
 fi
+if [! -d /var/tmp/mkexe ]; then
+    echo "tmp file not found" >&2
+    exit 1
+fi
+
 filename=$1
-for dir in $TMP; do
+tmps=`ls /var/tmp/mkexe/*`
+for dir in ${tmps}; do
     if [ -f "${dir}/${filename}" ]; then
         echo "${dir}/${filename}"
         exit 0
     fi
 done
-exit 1
 
+echo "tmp file not found" >&2
+exit 1
