@@ -1,1 +1,14 @@
-TODO
+.TH getrow 1
+.SH NAME
+getrow \- read table-formed data from stdin and get a row in it
+
+.SH SYNOPSIS
+.B getrow
+.Iindex
+
+.SH DESCRIPTION
+.I getrow
+reads table-formed data from stdin and get a row in it. The row number is specified by \fIindex\fR. This command recognize table using  multiple spaces with arbitary length as delimiter. cut command work in a similar way, but it can't use such spaces as the delimiter.
+
+.SH AUTHORS
+Baba Tatsuya
