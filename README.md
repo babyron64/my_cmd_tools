@@ -11,7 +11,7 @@ This repository contains command line tools I created. The number of tools avail
 Execute install.sh script. You can just install some of the tools by providing arguments. The arguments are names of tools which you want to install. If no argument is provided, all the tools will be installed. For example,
 ```
 ./install.sh # full install
-./install.sh reldl # install only reldl
+./install.sh mkexe gettmp # install mkexe and gettmp
 ```
 
 ## Tool's specific info
