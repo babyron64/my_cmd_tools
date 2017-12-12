@@ -1,5 +1,5 @@
 #!/bin/bash
-list="mkexe gettmp getrow docker-build lbtex"
+list="mkexe gettmp getrow lbtex"
 for i in $*; do
     if [ ! "`echo $list | grep $i`" ]; then
         echo "$i"' is not a tool name' >&2
