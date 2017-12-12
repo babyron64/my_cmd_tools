@@ -3,7 +3,7 @@
        getrow - read table-formed data from stdin and get a row in it
 
 ## SYNOPSIS
-       getrow
+       getrow index
 
 ## DESCRIPTION
        getrow  reads  table-formed  data from stdin and get a row in it. The
