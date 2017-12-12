@@ -5,7 +5,6 @@ This repository contains command line tools I created. The number of tools avail
 - mkexe
 - gettmp
 - getrow
-- docker-build
 - lbtex
 
 ## Install
