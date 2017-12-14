@@ -1,0 +1,45 @@
+#!/bin/bash
+while getopts a:t OPT
+do
+    case $OPT in
+        a ) alm=$OPTARG ;;
+        t ) trunc=true ;;
+        \? ) exit 1 ;;
+    esac
+done
+
+shift $(($OPTIND - 1))
+
+if [ $# -ne 1 ]; then
+    nums=$(cat -)
+else
+    nums=$1
+fi
+
+for hex in $nums; do
+    digit=$(echo "${#hex}*4" | bc)
+    bin=$(cb -i 16 -o 2 $hex)
+
+    if [ ! $trunc ]; then
+        pad_num=$(echo "$digit-${#bin}" | bc)
+        pad=""
+        if [ $pad_num -ne 0 ]; then
+            for i in `seq $pad_num`; do
+                pad+=0
+            done
+        fi
+        bin=$pad$bin
+    fi
+
+    if [ $alm ]; then
+        out=""
+        while [ ${#bin} -ge $alm ]; do
+            out+="${bin:0:$alm} "
+            bin=${bin:$alm}
+        done
+        out+=$bin
+    else
+        out=$bin
+    fi
+    echo $out
+done

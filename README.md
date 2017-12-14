@@ -9,6 +9,8 @@ This repository contains command line tools I created. The number of tools avail
 - basenum
 - stripbase
 - cb
+- b2h
+- h2b
 
 ## Install
 Execute install.sh script. You can just install some of the tools by providing arguments. The arguments are names of tools which you want to install. If no argument is provided, all the tools will be installed. For example,
