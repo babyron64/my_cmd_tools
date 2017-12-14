@@ -1,10 +1,7 @@
 #!/bin/bash
-<<<<<<< HEAD
-list="mkexe gettmp getrow lbtex basenum stripbase"
+list="mkexe gettmp getrow lbtex cb basenum stripbase"
+
 make
-=======
-list="mkexe gettmp getrow lbtex cb"
->>>>>>> 6bc0be3ae7058faa14ad54ca374a9dca51f9f0cc
 for i in $*; do
     if [ ! "`echo $list | grep $i`" ]; then
         echo "$i"' is not a tool name' >&2
