@@ -1,5 +1,6 @@
 #!/bin/bash
-list="mkexe gettmp getrow lbtex"
+list="mkexe gettmp getrow lbtex basenum stripbase"
+make
 for i in $*; do
     if [ ! "`echo $list | grep $i`" ]; then
         echo "$i"' is not a tool name' >&2
@@ -22,11 +23,11 @@ for i in $tools; do
                 echo "The man file for "$i", "$i.$s", already exists. It may be one for another program." >&2
                 continue
             fi
-            mv ./man/$i.$s /usr/local/share/man/man$s/
+            cp ./man/$i.$s /usr/local/share/man/man$s/
         fi
     done
 
-    mv $i /usr/local/bin/
+    cp $i /usr/local/bin/
     installed+=$i
     echo $installed >> catalog
 done 
