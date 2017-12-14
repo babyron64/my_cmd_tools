@@ -1,10 +1,14 @@
 SRC = ./src
-OUTPUTS = stripbase basenum
+BIN = ./bin
+OUTPUTS = $(BIN)/stripbase $(BIN)/basenum
 
 .PHONY: all
 
-all: $(OUTPUTS)  
+all: $(BIN) $(OUTPUTS)  
 
-%: $(SRC)/%.c
+$(BIN):
+	mkdir $(BIN)
+
+$(BIN)/%: $(SRC)/%.c
 	$(CC) -o $@ $<
 
