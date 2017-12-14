@@ -10,7 +10,17 @@ done
 
 shift $(($OPTIND - 1))
 
-if [ ! $ibase ]; then ibase=10; fi
+number=$1
+
+if [ ! $ibase ]; then
+    base=$(basenum $number)
+    number=$(stripbase $number)
+    if [ $base -eq 0 ]; then ibase=10
+    else ibase=$base; fi
+fi
+
+number=$(echo $number | tr '[:lower:]' '[:upper:]')
+
 if [ ! $obase ]; then obase=2; fi
 
-echo "obase=$obase;ibase=$ibase;$1" | bc
+echo "obase=$obase;ibase=$ibase;$number" | bc

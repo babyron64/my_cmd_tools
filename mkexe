@@ -74,6 +74,6 @@ if [ ! -d $dir ]; then
 fi
 
 touch $filepath
-chmod u+x $filepath
+chmod a+x $filepath
 echo "#!${sheb}" > $filepath
 echo $filepath
