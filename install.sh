@@ -1,5 +1,5 @@
 #!/bin/bash
-list="mkexe gettmp getrow lbtex cb basenum stripbase"
+list="mkexe gettmp getrow lbtex cb basenum stripbase b2h h2b"
 
 make
 for i in $*; do
