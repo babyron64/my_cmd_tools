@@ -13,7 +13,7 @@ get_base(char *num_str){
 int
 main(int argc, char *argv[]){
     if (argc != 2) {
-        fprintf(stderr, "exactly 1 argument is required");
+        fprintf(stderr, "basenum: exactly 1 argument is required\n");
         return -1;
     }
     char *num_str = argv[1];

@@ -18,7 +18,7 @@ strip_base(char *num_str){
 int
 main(int argc, char *argv[]){
     if (argc != 2) {
-        fprintf(stderr, "exactly 1 argument is required");
+        fprintf(stderr, "stripbase: exactly 1 argument is required\n");
         return -1;
     }
 

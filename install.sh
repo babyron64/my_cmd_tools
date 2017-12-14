@@ -28,12 +28,17 @@ for i in $tools; do
         fi
     done
 
+    if [ -f bin/$i ]; then i=bin/$i; fi
+
     cp $i /usr/local/bin/
-    installed+=$i
+
+    installed+=$i" "
     echo $installed >> catalog
 done 
 
-if [ ! "$installed" -a  -n "$installed" ]; then
+if [ -n "$installed" ]; then
+    installed=$(echo $installed | sed s:bin/::g)
+    echo "-----------------------------------" >&2
     echo "Successfully installed: "$installed >&2
 fi
 
