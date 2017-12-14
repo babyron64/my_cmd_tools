@@ -32,11 +32,13 @@ for i in $tools; do
 
     cp $i /usr/local/bin/
 
-    installed+=$i
+    installed+=$i" "
     echo $installed >> catalog
 done 
 
-if [ ! "$installed" -a  -n "$installed" ]; then
+if [ -n "$installed" ]; then
+    installed=$(echo $installed | sed s:bin/::g)
+    echo "-----------------------------------" >&2
     echo "Successfully installed: "$installed >&2
 fi
 
