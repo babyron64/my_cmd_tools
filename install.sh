@@ -22,7 +22,7 @@ for i in $tools; do
         if [ -f ./man/$i.$s ]; then
             if [ -f /usr/local/share/man/man$s/$i.$s ]; then
                 echo "The man file for "$i", "$i.$s", already exists. It may be one for another program." >&2
-                continue
+                continue 2
             fi
             cp ./man/$i.$s /usr/local/share/man/man$s/
         fi
