@@ -28,7 +28,10 @@ for i in $tools; do
         fi
     done
 
+    if [ -f bin/$i ]; then i=bin/$i; fi
+
     cp $i /usr/local/bin/
+
     installed+=$i
     echo $installed >> catalog
 done 
