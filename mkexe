@@ -48,7 +48,7 @@ case $ext in
     js  ) not_support ;;
     cmd ) sheb=/bin/bash
           tmp_dir=/var/tmp/mkexe/sh
-          dir=/usr/local/share/bin
+          dir=/usr/local/bin
           filename="`echo $filename | sed -e 's/\.[^\.]*$//g'`" ;;
     *   ) custom_ext ;;
 esac
