@@ -1,0 +1,17 @@
+#!/bin/bash
+
+if [ $# -ne 1 ]; then
+    echo "Usage: $0 brightness(%)" >&2
+    exit 1
+fi
+if [ $1 -gt 100 ] || [ $1 -lt 0 ]; then
+    echo "brightness must be from 0 to 100" >&2
+    exit 1
+fi
+
+max_brightness=$(cat /sys/class/backlight/intel_backlight/max_brightness)
+calc="$1*($max_brightness/100)"
+brightness=`echo $calc | bc | sed -e 's/\..*//'` 
+# echo $brightness
+echo $brightness > /sys/class/backlight/intel_backlight/brightness
+
